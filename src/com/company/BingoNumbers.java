@@ -38,11 +38,11 @@ public class BingoNumbers
             command = commands[0].toUpperCase();
             try
             {
-                if (command.equals("CALL") ||
-                        command.equals("CALLED") ||
-                        command.equals("VERIFY") ||
-                        command.equals("CHALLENGE") ||
-                        command.equals("BINGO"))
+                if (!command.equals("CALL") ||
+                        !command.equals("CALLED") ||
+                        !command.equals("VERIFY") ||
+                        !command.equals("CHALLENGE") ||
+                        !command.equals("BINGO"))
                 {
                     if (command.equals("CALL") && commands.length == 2)
                     {
