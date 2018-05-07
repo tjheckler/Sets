@@ -39,44 +39,80 @@ public class BingoNumbers
 
             if (command.equals("CALL") && commands.length == 2)
             {
-                int calledNumber = Integer.parseInt(commands[1]);
-                callNumber(calledNumber);
+                try
+                {
+                    int calledNumber = Integer.parseInt(commands[1]);
+                    callNumber(calledNumber);
+                } catch (Exception e)
+                {
+                    System.out.println(e.getMessage());
+                }
             }
             if (command.equals("CALLED"))
             {
-                for (int values : calledNumbers)
+                try
                 {
-                    System.out.println(values);
+                    for (int values : calledNumbers)
+                    {
+                        System.out.println(values);
+                    }
+                } catch (Exception e)
+                {
+                    System.out.println(e.getMessage());
                 }
             }
             if (command.equals("VERIFY") && commands.length == 2)
             {
-                int calledNumber = Integer.parseInt(commands[1]);
-                verifyNumber(calledNumber);
+                try
+                {
+                    int calledNumber = Integer.parseInt(commands[1]);
+                    verifyNumber(calledNumber);
+                } catch (Exception e)
+                {
+                    System.out.println(e.getMessage());
+                }
             }
             if (command.equals("CHALLENGE") && commands.length == 2)
             {
-
-                int challengedNumber = Integer.parseInt(commands[1]);
-
-                removeNumber(challengedNumber);
-            }
-            if(command.equals("BINGO"))
-            {
-                if (calledNumbers.size() >=4 )
+                try
                 {
-                    calledNumbers.clear();
-                    System.out.println("Congratulations you win a fruit cake!");
+                    int challengedNumber = Integer.parseInt(commands[1]);
+                    removeNumber(challengedNumber);
                 }
-                else if(calledNumbers.size()<4 )
+                catch (Exception e)
                 {
-                    System.out.println("Cheater!");
+                    System.out.println(e.getMessage());
+                }
+            }
+            if (command.equals("BINGO"))
+            {
+                try
+                {
+                    if (calledNumbers.size() >= 4)
+                    {
+                        calledNumbers.clear();
+                        System.out.println("Congratulations you win a fruit cake!");
+                    } else if (calledNumbers.size() < 4)
+                    {
+                        System.out.println("Cheater!");
+                    }
+                }
+                catch(Exception e)
+                {
+                    System.out.println(e.getMessage());
                 }
             }
         }
         while (!command.equals("EXIT"));
         {
-            System.out.println("Thanks for Playing!");
+            try
+            {
+                System.out.println("Thanks for Playing!");
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
