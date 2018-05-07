@@ -100,6 +100,7 @@ public class BingoNumbers
                                 System.out.println("Congratulations you win a fruit cake!");
                             } else if (calledNumbers.size() < 4)
                             {
+                                calledNumbers.clear();
                                 System.out.println("Cheater!");
                             }
                         } catch (Exception e)
