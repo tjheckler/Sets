@@ -37,10 +37,41 @@ public class BingoNumbers
             String[] commands = commandLine.split(" ");
             command = commands[0].toUpperCase();
 
-            if (command.equals("CALL")&& commands.length == 2)
+            if (command.equals("CALL") && commands.length == 2)
             {
                 int calledNumber = Integer.parseInt(commands[1]);
                 callNumber(calledNumber);
+            }
+            if (command.equals("CALLED"))
+            {
+                for (int values : calledNumbers)
+                {
+                    System.out.println(values);
+                }
+            }
+            if (command.equals("VERIFY") && commands.length == 2)
+            {
+                int calledNumber = Integer.parseInt(commands[1]);
+                verifyNumber(calledNumber);
+            }
+            if (command.equals("CHALLENGE") && commands.length == 2)
+            {
+
+                int challengedNumber = Integer.parseInt(commands[1]);
+
+                removeNumber(challengedNumber);
+            }
+            if(command.equals("BINGO"))
+            {
+                if (calledNumbers.size() >=4 )
+                {
+                    calledNumbers.clear();
+                    System.out.println("Congratulations you win a fruit cake!");
+                }
+                else if(calledNumbers.size()<4 )
+                {
+                    System.out.println("Cheater!");
+                }
             }
         }
         while (!command.equals("EXIT"));
@@ -51,7 +82,7 @@ public class BingoNumbers
 
     private void callNumber(int number)
     {
-        if(number >= 1 && number <=75)
+        if (number >= 1 && number <= 75)
         {
             if (calledNumbers.contains(number))
             {
@@ -61,11 +92,45 @@ public class BingoNumbers
                 System.out.println("Added " + number);
                 calledNumbers.add(number);
             }
+        } else
+        {
+            System.out.println("Only numbers 1 to 75");
         }
-        else
-            {
-                System.out.println("Only numbers 1 to 75");
-            }
     }
 
+    private void verifyNumber(int number)
+    {
+        if (number >= 1 && number <= 75)
+        {
+            if (calledNumbers.contains(number))
+            {
+                System.out.println(number + " Already Called! ");
+            } else
+            {
+                System.out.println(number + " Not Called Yet! ");
+            }
+        } else
+        {
+            System.out.println("Only numbers 1 to 75");
+        }
+
+    }
+
+    private void removeNumber(int number)
+    {
+        if (number >= 1 && number <= 75)
+        {
+            if (calledNumbers.contains(number))
+            {
+                calledNumbers.remove(number);
+            } else
+            {
+                System.out.println(number + " Not Called Yet! ");
+            }
+        } else
+        {
+            System.out.println("Only numbers 1 to 75");
+        }
+
+    }
 }
